@@ -20,7 +20,7 @@ class SineWaveRobotEnv:
         p.loadURDF("plane.urdf")
         
         # Load the robot URDF
-        urdf_model = "real_leg_crab2.SLDASM.urdf"
+        urdf_model = "spider.SLDASM.urdf"
         orientation = p.getQuaternionFromEuler([np.pi/2, 0, np.pi/2])
         self.robotId = p.loadURDF(urdf_model, [0, 0, 0.12], orientation)
         
@@ -46,7 +46,7 @@ class SineWaveRobotEnv:
                 continue
 
 
-            for joint_index in range(4):  # Apply to 8 joints
+            for joint_index in range(8):  # Apply to 8 joints
                 amplitude, frequency, phase = action[joint_index]
                 # Compute the target position using sine wave: amplitude * sin(2 * pi * frequency * t + phase)
                 target_position = amplitude * sin(2 * pi * frequency * current_time + phase)
@@ -69,7 +69,7 @@ def fitness_function(individual):
     env.reset()
 
     # 将个体的基因转换为动作格式，每 3 个参数表示一个关节的 (振幅, 频率, 相位)
-    action = np.reshape(individual, (4, 3))  # 4 joints, 3 parameters each
+    action = np.reshape(individual, (8, 3))  # 4 joints, 3 parameters each
     
     # 惩罚因子，如果有振幅超过 20 度（0.349066 弧度），将适应度乘以这个因子
     penalty_factor = 1.0
@@ -100,7 +100,7 @@ def genetic_algorithm():
 
     # 基因的范围是 0.1 到 0.5 (振幅), 0.5 到 2.0 (频率), 0 到 2*pi (相位)
     toolbox.register("attr_float", random.uniform, 0.1, 0.349066)  # 振幅的范围限制为 0.1 到 0.349066 弧度
-    toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_float, n=12)  # 8 joints * 3 parameters = 6
+    toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_float, n=24)  # 8 joints * 3 parameters = 6
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
     toolbox.register("evaluate", fitness_function)
@@ -116,8 +116,8 @@ def genetic_algorithm():
     stats.register("max", np.max)
 
     # 遗传算法参数
-    population_size = 100
-    generations = 1500
+    population_size = 50
+    generations = 1000
     crossover_rate = 0.7
     mutation_rate = 0.15
 
@@ -147,7 +147,7 @@ def simulate_best_solution(best_solution):
     p.loadURDF("plane.urdf")
 
     # Load the URDF model from the current directory
-    urdf_model = "real_leg_crab2.SLDASM.urdf"
+    urdf_model = "spider.SLDASM.urdf"
     orientation = p.getQuaternionFromEuler([np.pi/2, 0, np.pi/2])  # Convert Euler angles to quaternion
     robotId = p.loadURDF(urdf_model, [0, 0, 0.12], orientation)
 
@@ -167,10 +167,10 @@ def simulate_best_solution(best_solution):
     num_joints = p.getNumJoints(robotId)
     
     # 将最佳个体的基因转换为动作格式
-    joint_params = np.reshape(best_solution, (4, 3))  # 将最佳个体的基因转换为 (8 joints, 3 parameters)
+    joint_params = np.reshape(best_solution, (8, 3))  # 将最佳个体的基因转换为 (8 joints, 3 parameters)
 
     # Simulate for a few seconds with joint movement
-    simulation_duration = 10  # seconds
+    simulation_duration = 20  # seconds
     time_step = 1. / 240.  # Simulation time step
 
     # Simulate for a set time
@@ -184,7 +184,7 @@ def simulate_best_solution(best_solution):
             continue
 
 
-        for joint_index in range(min(num_joints, 4)):  # Apply to 8 joints
+        for joint_index in range(min(num_joints, 8)):  # Apply to 8 joints
             amplitude, frequency, phase = joint_params[joint_index]
             # Compute the target position using sine wave: amplitude * sin(2 * pi * frequency * t + phase)
             target_position = amplitude * sin(2 * pi * frequency * current_time + phase)
@@ -211,7 +211,7 @@ def print_joint_info(action):
     p.loadURDF("plane.urdf")
 
     # Load the URDF model from the current directory
-    urdf_model = "real_leg_crab2.SLDASM.urdf"
+    urdf_model = "spider.SLDASM.urdf"
     orientation = p.getQuaternionFromEuler([np.pi/2, 0, np.pi/2])
     robotId = p.loadURDF(urdf_model, [0, 0, 0.12], orientation)
 
@@ -238,16 +238,11 @@ def print_joint_info(action):
 
 # 运行遗传算法
 #best_solution = genetic_algorithm()
-#print("Best solution found:", best_solution)
 
-# 使用最佳解决方案进行10秒钟的仿真并输出动画
-#simulate_best_solution(best_solution)
-
-good_solution = [0.730998388297186, 0.6477440582563998, 1.3583822195959938, -0.3854007844501121, 0.6257689710948455, 0.44034836549164197, 0.2623567842429492, 0.6212837526712353, 1.3610669397282478, 0.9412041026939834, 0.644898188856752, 0.6724217878417728]
-good_solution_limit = [0.3478903960593135, 0.26855787859043, 1.0256302948650915, 0.34651648794638784, 0.28777710937215795, 1.3188589878730592, 0.3488341529726878, 0.2929271618790448, 0.2127559829196567, 0.34852819558275777, 0.2899825426639473, 0.36810489117955003]
-test_solution = [0.34886333104280903, 0.30061695144825273, 0.8757690792985264, 0.34617482213814116, 0.2880190260799543, 2.106377672034846, 0.3487478361586899, 0.29192665261983614, 1.1047787205682773, 0.3488597990655894, 0.29490008124496236, 0.9768581792607279]
-a = simulate_best_solution(test_solution)
-b = fitness_function(test_solution)
+test_solution = [0.15815873812652034, 0.2606073141570008, 0.26760547795818207, 0.336063872418118, 0.5674556101739952, 0.3310464182295256, 0.22956392089497743, 0.3497133585272746, 0.11982812268261982, 0.3426817131911689, 0.28420028456162816, 0.17913647798836052, 0.20341510778812516, 0.22897667970717375, 0.2997119944758957, 0.27714525384087063, 0.2601073937127786, 0.09089474918784778, 0.3465003107322865, 0.2906427640405874, 0.09141995680400822, 0.3274777494858092, 0.5962394562025305, 0.20905920278007215]
+pareto = [0.3013224647775507, 1.1326591136032793, 1.2083176269984182, 0.33861962784851485, 1.0406788307583756, 0.9769113855016969, -1.0874752722867103, 1.1272630516688236, 0.7418284020572621, 0.3118873032161723, 1.0865923569644773, 2.58137053019148, 0.3448190721828047, 1.0692905555031713, 0.9868322483872967, 0.28555407498730456, 1.1360906090643743, 2.2884478425953056, -1.0795589899396796, 1.1215223519909183, 4.906374874776356, 0.34698214007113926, 1.1158231558413643, 5.007879369523769]
+a = simulate_best_solution(pareto)
+#b = fitness_function(test_solution)
 print(a)
-print(b)
-print_joint_info(test_solution)
+#print(b)
+#print_joint_info(test_solution)

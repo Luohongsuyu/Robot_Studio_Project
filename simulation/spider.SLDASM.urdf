@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="spider.SLDASM">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0013063 -0.010355 0.00054505"
+        rpy="0 0 0" />
+      <mass
+        value="0.42747" />
+      <inertia
+        ixx="0.0006522"
+        ixy="3.7545E-06"
+        ixz="-8.5996E-07"
+        iyy="0.001247"
+        iyz="-1.2508E-06"
+        izz="0.00066115" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="0.047577 0.019819 -0.019688"
+        rpy="0 0 0" />
+      <mass
+        value="0.058845" />
+      <inertia
+        ixx="1.0654E-05"
+        ixy="-1.2534E-06"
+        ixz="7.5732E-07"
+        iyy="1.3493E-05"
+        iyz="1.1995E-06"
+        izz="1.0843E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="continuous">
+    <origin
+      xyz="0.10245203697008 -0.0154804241699117 -0.115585674153596"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="-0.707653001110447 0 -0.706560138996942" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.022703 0.0013905 0.010521"
+        rpy="0 0 0" />
+      <mass
+        value="0.04063" />
+      <inertia
+        ixx="1.9387E-05"
+        ixy="4.5676E-06"
+        ixz="-1.4195E-06"
+        iyy="1.2365E-05"
+        iyz="-4.5746E-06"
+        izz="1.9391E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="continuous">
+    <origin
+      xyz="0.0527406357925132 0.000380424169911596 -0.0589080347189317"
+      rpy="0 0 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0.707653001110448 0 0.706560138996941" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="-0.019933 0.019819 -0.047475"
+        rpy="0 0 0" />
+      <mass
+        value="0.058845" />
+      <inertia
+        ixx="1.0835E-05"
+        ixy="1.2059E-06"
+        ixz="-7.5825E-07"
+        iyy="1.3493E-05"
+        iyz="1.2472E-06"
+        izz="1.0661E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="continuous">
+    <origin
+      xyz="-0.130782975573978 -0.0154804241699116 -0.0873206907507931"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link3" />
+    <axis
+      xyz="-0.702910103204509 0 0.711278698410846" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="0.0104041925841687 0.00139050476038522 -0.0227573198977664"
+        rpy="0 0 0" />
+      <mass
+        value="0.0406300755227362" />
+      <inertia
+        ixx="1.94058945172084E-05"
+        ixy="-4.59804803221126E-06"
+        ixz="1.4194026206744E-06"
+        iyy="1.23654105817196E-05"
+        iyz="-4.54404841025579E-06"
+        izz="1.93722146666294E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="continuous">
+    <origin
+      xyz="-0.0591785915521016 0.000380424169911599 -0.0524368717617185"
+      rpy="0 0 0" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0.702910103204738 0 -0.711278698410619" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="-0.047531 0.019819 0.0198"
+        rpy="0 0 0" />
+      <mass
+        value="0.058845" />
+      <inertia
+        ixx="1.0657E-05"
+        ixy="1.2505E-06"
+        ixz="7.5775E-07"
+        iyy="1.3493E-05"
+        iyz="-1.2024E-06"
+        izz="1.0839E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="continuous">
+    <origin
+      xyz="-0.1025182021394 -0.0154804241699116 0.115627347320189"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0.709305504289092 0 0.704901199874987" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="-0.0227280654453962 0.00139050471823565 -0.0104679451190847"
+        rpy="0 0 0" />
+      <mass
+        value="0.0406300756588968" />
+      <inertia
+        ixx="1.93801732586128E-05"
+        ixy="-4.55691994180143E-06"
+        ixz="-1.41947472286121E-06"
+        iyy="1.23654106534207E-05"
+        iyz="4.58529216702764E-06"
+        izz="1.93979371661561E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="continuous">
+    <origin
+      xyz="-0.0526025553277643 0.000380424169911599 0.0590313678584097"
+      rpy="0 0 0" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="-0.709305504289093 0 -0.704901199874987" />
+  </joint>
+  <link
+    name="link7">
+    <inertial>
+      <origin
+        xyz="0.0196651357063031 0.0198189352056879 0.0475865089437618"
+        rpy="0 0 0" />
+      <mass
+        value="0.058844691586367" />
+      <inertia
+        ixx="1.08436758932156E-05"
+        ixy="-1.19885286781119E-06"
+        ixz="-7.57222736516979E-07"
+        iyy="1.34925225906921E-05"
+        iyz="-1.25394102406634E-06"
+        izz="1.06529528476186E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint7"
+    type="continuous">
+    <origin
+      xyz="0.130493622647396 -0.0154804241699116 0.087567983867082"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link7" />
+    <axis
+      xyz="0.706905806827747 0 -0.70730769844051" />
+  </joint>
+  <link
+    name="link8">
+    <inertial>
+      <origin
+        xyz="-0.0105322267102558 0.00139050467504731 0.0226983487522404"
+        rpy="0 0 0" />
+      <mass
+        value="0.040630075795936" />
+      <inertia
+        ixx="1.93899030808031E-05"
+        ixy="4.57237719761873E-06"
+        ixz="1.41950225578791E-06"
+        iyy="1.23654107262561E-05"
+        iyz="4.5698788122108E-06"
+        izz="1.93882085937431E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://spider.SLDASM/meshes/link8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint8"
+    type="continuous">
+    <origin
+      xyz="0.0588822591407036 0.00038042416991161 0.0527694113737533"
+      rpy="0 0 0" />
+    <parent
+      link="link7" />
+    <child
+      link="link8" />
+    <axis
+      xyz="-0.706905806839964 0 0.7073076984283" />
+  </joint>
+</robot>
