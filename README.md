@@ -38,7 +38,7 @@ All the robot components (except for the screws, servos, and wires) were produce
 Figure 4. 3d printing the robot part<br>
 
 ## Result
-vido can find on YouTube through this link: https://www.youtube.com/watch?v=yAFkwFUbHYc
+Video can find on YouTube through this link: [https://www.youtube.com/watch?v=yAFkwFUbHYc](https://www.youtube.com/watch?v=RdD6Z4WlUA0)
 It can be observed that although both the simulation and the real-world robot are moving forward, there are still significant differences in overall posture and speed. The possible reasons for this could be the variation in ground friction, as well as discrepancies in dimensions and initial conditions caused during the actual manufacturing process.
 ![Image](image/sim2real.png)<br>
 Figure 5. test result using same actuation method both simulation and real<br>
