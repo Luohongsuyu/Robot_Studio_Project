@@ -27,18 +27,21 @@ For this simple robot with four servos, I decided to use a sine function as the 
 
 For this robot, the input at each moment is an array containing 12 parameters (4 servos, each with 3 parameters: phase, frequency, and amplitude). I use a genetic algorithm based on the DEAP library to find the optimal 12 parameters, enabling the robot to move forward. (The simulation code is provided in simulation folder) The simulation environment is set up using PyBullet.
 
+![Image](image/evolution.gif)<br>
+Figure 3. NSGA2 mult-objective optimization pareto front update<br>
+
 ![Image](image/sim.png)<br>
-Figure 3. simulation of the best result in PyBullet<br>
+Figure 4. simulation of the best result in PyBullet<br>
 
 ## Manufacture
 
 All the robot components (except for the screws, servos, and wires) were produced using a 3D printer. After appropriately slicing the STL files, the components were printed directly.
 
 ![Image](image/printing.png)<br>
-Figure 4. 3d printing the robot part<br>
+Figure 5. 3d printing the robot part<br>
 
 ## Result
-Video can find on YouTube through this link: [https://www.youtube.com/watch?v=yAFkwFUbHYc](https://www.youtube.com/watch?v=RdD6Z4WlUA0)
+Video can find on YouTube through this link: https://www.youtube.com/watch?v=3TSiQ1dDSS4
 It can be observed that although both the simulation and the real-world robot are moving forward, there are still significant differences in overall posture and speed. The possible reasons for this could be the variation in ground friction, as well as discrepancies in dimensions and initial conditions caused during the actual manufacturing process.
 ![Image](image/sim2real.png)<br>
-Figure 5. test result using same actuation method both simulation and real<br>
+Figure 6. test result using same actuation method both simulation and real<br>
